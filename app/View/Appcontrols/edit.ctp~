@@ -1,0 +1,222 @@
+
+         	<?php 
+			     	echo $this->Form->create('Appcontrol');
+				
+	   		?>  
+        <div class="content-wrapper">
+     
+        
+
+        <!-- Main content -->
+        <section class="content">
+			
+			<h2>Edit Control</h2>
+	     
+					
+          <!-- Main row -->
+          <div class="row">
+           
+            <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="box box-primary">
+           
+                <!-- form start -->
+               
+                  <div class="box-body">
+
+				
+				
+			    			
+				
+				<div class="form-group">
+                    <label for="">Start Date</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-mobile-phone"></i></span>
+							<?php echo $this->Form->input('startdate',array( 'label'=>false,'type' => 'text','placeholder'=>'start date', 'class'=>'form-control', 'id'=>'datepicker1'));?>
+						
+						</div>
+						
+					
+           </div>
+		   
+		   
+		   <div class="form-group">
+                    <label for=""> End Date </label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<?php echo $this->Form->input('enddate',array( 'label'=>false,'type' => 'text','placeholder'=>'start time', 'class'=>'form-control', 'id'=>'datepicker2'));?>
+						
+						
+						</div>
+							
+					
+					</div>
+					
+				
+			
+				
+				
+                  </div>
+
+             
+              </div>
+            </div>
+            
+             <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="box box-primary">
+           
+                <!-- form start -->
+               
+                  <div class="box-body">
+
+			    			
+				
+				<div class="form-group">
+                    <label for="">Start Time</label>
+						<div class="input-group">
+						<div class="left-area">
+					  
+					   <?php echo $this->Form->input('starttime',array( 'label'=>false,'type' => 'Time','placeholder'=>'end date', 'class'=>'form-control', 'id'=>'enddate',));?>
+					   </div>
+							
+							
+						
+						</div>
+						
+					
+           </div>
+		   
+		   
+		   <div class="form-group">
+                    <label for=""> End Time </label>
+                  <div class="input-group">
+						<div class="left-area">
+					  
+					   <?php echo $this->Form->input('endtime',array( 'label'=>false,'type' => 'Time','placeholder'=>'end date', 'class'=>'form-control', 'id'=>'enddate',));?>
+					   </div>
+							
+							
+						
+						</div>
+					
+						
+					
+					</div>
+					
+				
+			
+				
+				
+                  </div>
+
+             
+              </div>
+            </div>
+		
+<!--start 2nd box-->
+
+
+			<div class="col-md-6">
+				<div class="box box-primary">
+               
+                <div class="box-body">
+                 
+                    <!-- text input -->
+                    
+					
+					<div class="form-group">
+                    <label for="">Comment </label>
+						<div class="input-group">
+							
+						<?php echo $this->Form->input('comment',array('label'=>false,'type' => 'textarea','placeholder'=>'comment', 'class'=>'form-control', 'id'=>'type'));?>
+						
+						</div>
+						<div id="verr3" class="v-error" style="display:none;">
+						 <p>Enter Vechile Type</p>
+						</div>
+					
+					</div>	
+					
+					
+			
+					<div class="box-footer">
+					<input type="submit"  id="btnfrm" value="Save" name="Save" class="btn btn-primary">
+                  
+                  </div>
+
+             
+                </div><!-- /.box-body -->
+              </div>
+			  
+			  
+			</div>
+			
+			
+          </div><!-- /.row (main row) -->
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->     
+           
+           <?php echo $this->Form->end(); ?>        
+           
+      <!---footer --js--->
+          
+     
+    <!-- Bootstrap 3.3.5 -->
+      	<script src="<?php echo $this->webroot; ?>build/js/jquery.min.js"></script>  
+     <script src="<?php echo $this->webroot; ?>js/bootstrap.min.js"></script>
+
+    <script src="<?php echo $this->webroot; ?>js/app.min.js"></script>
+	
+    <script src='<?php echo $this->webroot; ?>js/bootstrap-datepicker.js'></script>
+
+    <script src="<?php echo $this->webroot; ?>js/index.js"></script>
+    
+     <script src='<?php echo $this->webroot; ?>js/bootstrap-datetimepicker.min.js'></script>
+    
+     <link rel="stylesheet" href="<?php echo $this->webroot; ?>css/bootstrap-datetimepicker.min.css"/>
+   
+   
+     <script type="text/javascript">
+            $(function () {
+              $('#datepicker1').datepicker({
+            format: 'yyyy-mm-dd',
+          
+           });
+
+         $('#datepicker2').datepicker({
+            format: 'yyyy-mm-dd',
+         
+     });
+    
+            });
+        </script> 
+        
+         <script type="text/javascript" >
+      var startDate=null;
+		var endDate=null;
+		$(document).ready(function(){
+			$('#datepicker').datepicker()
+				.on('changeDate', function(ev){
+					startDate=new Date(ev.date.getFullYear(),ev.date.getMonth(),ev.date.getDate(),0,0,0);
+					if(endDate!=null&&endDate!='undefined'){
+						if(endDate<startDate){
+								alert("End Date is less than Start Date");
+								$("#startDate").val("");
+						}
+					}
+				});
+			$("#datepicker1").datepicker()
+				.on("changeDate", function(ev){
+					endDate=new Date(ev.date.getFullYear(),ev.date.getMonth(),ev.date.getDate(),0,0,0);
+					if(startDate!=null&&startDate!='undefined'){
+						if(endDate<startDate){
+							alert("End Date is less than Start Date");
+							$("#endDate").val("");
+						}
+					}
+				});
+		});
+    </script>
+  
